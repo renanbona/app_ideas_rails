@@ -39,6 +39,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 4.5'
   gem 'simplecov', '~> 0.21.2'
   gem 'vcr', '~> 6.0'
+  gem 'webmock', '~> 3.11'
 end
 
 group :development do

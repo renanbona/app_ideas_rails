@@ -2,12 +2,12 @@ class BinariesConversionController < ApplicationController
   def index
     converted_number = BinToDec.call(binary_number)
 
-    render json: { "anwser": converted_number }
+    render json: { "converted_number": converted_number }
   end
 
   private
 
   def binary_number
-    params.dig('binaries_conversion', 'binary')
+    params['binary']
   end
 end

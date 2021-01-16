@@ -15,7 +15,7 @@ class BinToDec
 
   def call
     calculate
-    show_answer
+    show_result
   end
 
   private
@@ -47,11 +47,9 @@ class BinToDec
     end
   end
 
-  def show_answer
-    if @invalid_input.empty?
-      @result
-    else
-      "The input is invalid because it has the following characters: #{@invalid_input}"
-    end
+  def show_result
+    return @result if @invalid_input.empty?
+
+    raise StandardError, "The input is invalid because it has the following characters: #{@invalid_input}"
   end
 end

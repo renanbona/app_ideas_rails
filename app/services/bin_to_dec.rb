@@ -50,6 +50,6 @@ class BinToDec
   def show_result
     return @result if @invalid_input.empty?
 
-    raise StandardError, "The input is invalid because it has the following characters: #{@invalid_input}"
+    raise StandardError, "Enter either 0 or 1"
   end
 end

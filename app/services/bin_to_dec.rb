@@ -15,23 +15,16 @@ class BinToDec
 
   def call
     calculate
-    show_result
   end
 
   private
 
   def formatted_number
     return @formatted_number ||= number.reverse if number.is_a? String
-
-    @formatted_number ||= number
   end
 
   def validate_binary_number(number)
     number != '0' && number != '1'
-  end
-
-  def update_invalid_input(num)
-    @invalid_input += num
   end
 
   def calculate
@@ -39,17 +32,12 @@ class BinToDec
       num = formatted_number[n]
 
       if validate_binary_number(num)
-        update_invalid_input(num)
-        next
+        raise StandardError, "Enter either 0 or 1"
       else
         @result += (2**n) * num.to_i
       end
     end
-  end
 
-  def show_result
-    return @result if @invalid_input.empty?
-
-    raise StandardError, "Enter either 0 or 1"
+    @result
   end
 end

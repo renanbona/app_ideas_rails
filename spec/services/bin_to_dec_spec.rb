@@ -10,4 +10,10 @@ RSpec.describe BinToDec do
       expect(BinToDec.call('10101111')).to eq(175)
     end
   end
+
+  context 'when the input is invalid' do
+    it 'raises an error' do
+      expect{BinToDec.call('1010FF')}.to raise_error
+    end
+  end
 end

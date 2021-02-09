@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+      - bundle_path:/bundle
+      - ./config/database.yml:/usr/src/app/config/database.yml
+      - ./config/application.yml.example:/usr/src/app/config/application.yml
+    environment:
+      - BUNDLE_PATH=/bundle/vendor
+    command: bundle exec rails server -b 0.0.0.0
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+
+  db:
+    image: postgres:12.2-alpine
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - DATABASE_URL=postgresql://postgres:postgres@postgres/app_ideas_rails_development
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  bundle_path:
+  postgres:
